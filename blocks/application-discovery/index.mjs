@@ -1,0 +1,1 @@
+import{createOperationalBlock}from'../core/operational-block.mjs';export const block=createOperationalBlock({id:'application-discovery',capabilities:['inventory','classification','unknown-detection']});

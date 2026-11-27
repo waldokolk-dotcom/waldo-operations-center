@@ -1,0 +1,1 @@
+import{createOperationalBlock}from'../core/operational-block.mjs';export const block=createOperationalBlock({id:'progress-stagnation-engine',capabilities:['evidence-progress','stagnation','blockers']});
