@@ -13,7 +13,9 @@ Hybride eventgedreven architectuur. Ingest adapters normaliseren naar eventcontr
 
 ## Actuele afhankelijkheden
 
-WAF registry 0.3.2 op commit `29daba5`: 21 geselecteerde blokken zijn geregistreerd als approved/productionVerified. Dat registerbewijs vervangt geen WOC-integratietest. De M01-shell gebruikt nog geen runtimekopie van die implementaties; zij pint de contractversies in `waf-lock.json` en implementeert alleen WOC-specifieke policy/eventgrenzen.
+WAF registry 0.3.2 bevat 21 geselecteerde blokken als approved/productionVerified. Dat registerbewijs vervangt geen WOC-integratietest. WOC pint de contractversies in `waf-lock.json`, importeert alleen publieke WAF-package-exports en houdt WOC-specifieke policy/eventgrenzen lokaal.
+
+De eerste verticale koppeling importeert de publieke exports van `@waldokolk/waf-core`: WAF voert de begrensde HTTPS-healthcheck, failure-window en incidentvalidatie uit; WOC vertaalt de uitkomst naar eventcontract 1.0, dedupliceert op event-ID en bewaakt `current`, `stale` en `unknown`. De huidige event store is bewust proceslokaal testbewijs en geen duurzame productieopslag. Productie vereist een exacte WAF-commit/package, zelfstandige read-only broncredentials en PostgreSQL-retentie.
 
 ## Specialistische voorzieningen
 

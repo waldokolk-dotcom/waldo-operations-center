@@ -1,1 +1,1 @@
-{"name":"waldo-operations-center","version":"0.1.0","private":true,"type":"module","engines":{"node":">=22"},"scripts":{"start":"node src/server.mjs","test":"node --test tests/*.test.mjs"}}
+{"name":"waldo-operations-center","version":"0.1.0","private":true,"type":"module","engines":{"node":">=22"},"scripts":{"start":"node src/server.mjs","test":"node --test tests/*.test.mjs"},"dependencies":{"@waldokolk/waf-core":"git+https://github.com/waldokolk-dotcom/waldo-application-factory.git#a72b9acba9c88881203b1c552ee0398ce0fa4580"}}
