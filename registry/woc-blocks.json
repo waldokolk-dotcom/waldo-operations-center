@@ -1,0 +1,34 @@
+{
+  "version": "0.1.0",
+  "blocks": [
+    {
+      "id": "realtime-event-engine",
+      "version": "0.1.0",
+      "status": "testing",
+      "path": "blocks/realtime-event-engine/index.mjs",
+      "contractVersion": "1.0",
+      "capabilities": ["ingest", "batch-ingest", "deduplication", "freshness", "subscriptions", "bounded-replay", "retention"],
+      "acceptance": "tests/realtime-event-engine.test.mjs",
+      "lifecycle": {
+        "built": {"passed": true, "evidence": "blocks/realtime-event-engine/index.mjs"},
+        "tested": {"passed": false, "evidence": null},
+        "integrated": {"passed": true, "evidence": "src/activity-service.mjs"},
+        "deployable": {"passed": false, "evidence": null},
+        "deployed": {"passed": false, "evidence": null}
+      },
+      "consumers": [
+        {
+          "applicationId": "mission-control",
+          "name": "Mission Control WAF en WOC",
+          "type": "web-app",
+          "environment": "local",
+          "version": "0.1.0",
+          "since": "2026-11-27T20:00:00+01:00",
+          "status": "integrated",
+          "evidence": "src/activity-service.mjs",
+          "lastVerifiedAt": "2026-11-27T20:00:00+01:00"
+        }
+      ]
+    }
+  ]
+}
