@@ -1,0 +1,1 @@
+import{createOperationalBlock}from'../core/operational-block.mjs';export const block=createOperationalBlock({id:'autonomous-orchestration',capabilities:['bounded-tasks','approval-gates','emergency-stop']});

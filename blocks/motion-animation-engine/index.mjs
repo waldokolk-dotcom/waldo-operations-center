@@ -1,0 +1,1 @@
+import{createOperationalBlock}from'../core/operational-block.mjs';export const block=createOperationalBlock({id:'motion-animation-engine',capabilities:['meaningful-motion','reduced-motion','performance-guard']});
