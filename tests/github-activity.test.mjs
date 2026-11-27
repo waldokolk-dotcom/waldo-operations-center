@@ -31,3 +31,10 @@ test('activity service dedupliceert door caching en geeft alleen veilige dashboa
   let calls=0;const repository='waldokolk-dotcom/waldo-operations-center';const service=createActivityService({repositories:[repository],cacheMs:60_000,now:()=>new Date('2026-11-27T19:00:00Z'),fetcher:async()=>{calls++;return response([commit(repository,'c'.repeat(40),'<script>alert(1)</script>','2026-11-27T18:00:00Z')])}});
   const first=await service.snapshot();const second=await service.snapshot();assert.equal(calls,1);assert.equal(service.eventCount(),1);assert.equal(first,second);assert.equal(first.activities[0].summary,'<script>alert(1)</script>');assert.equal('sourceIdentity' in first.activities[0],false);
 });
+
+test('activity service sorteert meerdere immutable engine-events zonder mutatie', async () => {
+  const repository='waldokolk-dotcom/waldo-operations-center';
+  const service=createActivityService({repositories:[repository],now:()=>new Date('2026-11-27T19:00:00Z'),fetcher:async()=>response([commit(repository,'d'.repeat(40),'Ouder','2026-11-27T17:00:00Z'),commit(repository,'e'.repeat(40),'Nieuwer','2026-11-27T18:00:00Z')])});
+  const snapshot=await service.snapshot();
+  assert.deepEqual(snapshot.activities.map(item=>item.summary),['Nieuwer','Ouder']);
+});
