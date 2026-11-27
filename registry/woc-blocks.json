@@ -4,16 +4,16 @@
     {
       "id": "realtime-event-engine",
       "version": "0.1.0",
-      "status": "testing",
+      "status": "ready",
       "path": "blocks/realtime-event-engine/index.mjs",
       "contractVersion": "1.0",
       "capabilities": ["ingest", "batch-ingest", "deduplication", "freshness", "subscriptions", "bounded-replay", "retention"],
       "acceptance": "tests/realtime-event-engine.test.mjs",
       "lifecycle": {
         "built": {"passed": true, "evidence": "blocks/realtime-event-engine/index.mjs"},
-        "tested": {"passed": false, "evidence": null},
+        "tested": {"passed": true, "evidence": "https://github.com/waldokolk-dotcom/waldo-operations-center/actions/runs/46053583382"},
         "integrated": {"passed": true, "evidence": "src/activity-service.mjs"},
-        "deployable": {"passed": false, "evidence": null},
+        "deployable": {"passed": true, "evidence": "commit:7406ddaeb87a4fe78e3ba2f1f2c4cf25b1a69f9e"},
         "deployed": {"passed": false, "evidence": null}
       },
       "consumers": [
