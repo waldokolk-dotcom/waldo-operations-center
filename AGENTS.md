@@ -1,0 +1,2 @@
+# WOC development rules
+Independent private repository. Read WAF standards and PR18 read-only. No consumer writes, secrets, paid upgrades or deployment. All operational modules remain disabled until six core WAF blocks are production verified with evidence. Use isolated branches, expected-head lease, tests and rollback. Read-only health probes only for explicitly approved exact HTTPS endpoints. Never treat timeout as confirmed outage. Follow WAF UX v0.2; no invented metrics or UX scores.

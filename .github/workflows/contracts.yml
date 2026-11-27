@@ -1,0 +1,14 @@
+name: WOC contract checks
+on: [pull_request]
+permissions:
+  contents: read
+concurrency:
+  group: woc-contracts-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - run: node --test

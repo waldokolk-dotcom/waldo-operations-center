@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "contractVersion": "0.1.0",
+  "upstream": "https://github.com/waldokolk-dotcom/waldo-application-factory/pull/18",
+  "requiredCore": [
+    "auth",
+    "data",
+    "theme",
+    "api",
+    "quality",
+    "release"
+  ],
+  "modules": [
+    {
+      "id": "monitoring",
+      "priority": "P0",
+      "upstreamVersion": "0.1.0",
+      "enabled": false,
+      "status": "blocked"
+    },
+    {
+      "id": "incident",
+      "priority": "P0",
+      "upstreamVersion": null,
+      "enabled": false,
+      "status": "blocked"
+    },
+    {
+      "id": "recovery",
+      "priority": "P0",
+      "upstreamVersion": null,
+      "enabled": false,
+      "status": "blocked"
+    },
+    {
+      "id": "security-ops",
+      "priority": "P0",
+      "upstreamVersion": null,
+      "enabled": false,
+      "status": "blocked"
+    },
+    {
+      "id": "backup",
+      "priority": "P0",
+      "upstreamVersion": null,
+      "enabled": false,
+      "status": "blocked"
+    },
+    {
+      "id": "cost-control",
+      "priority": "P0",
+      "upstreamVersion": null,
+      "enabled": false,
+      "status": "blocked"
+    },
+    {
+      "id": "support",
+      "priority": "P1",
+      "upstreamVersion": null,
+      "enabled": false,
+      "status": "blocked"
+    },
+    {
+      "id": "feedback",
+      "priority": "P1",
+      "upstreamVersion": null,
+      "enabled": false,
+      "status": "blocked"
+    },
+    {
+      "id": "notifications",
+      "priority": "P1",
+      "upstreamVersion": null,
+      "enabled": false,
+      "status": "blocked"
+    },
+    {
+      "id": "ops-reporting",
+      "priority": "P1",
+      "upstreamVersion": null,
+      "enabled": false,
+      "status": "blocked"
+    },
+    {
+      "id": "improvement",
+      "priority": "P2",
+      "upstreamVersion": null,
+      "enabled": false,
+      "status": "blocked"
+    },
+    {
+      "id": "knowledge",
+      "priority": "P2",
+      "upstreamVersion": null,
+      "enabled": false,
+      "status": "blocked"
+    }
+  ]
+}
