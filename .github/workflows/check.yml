@@ -1,0 +1,20 @@
+name: Mission Control checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm audit --omit=dev
+      - name: Record acceptance boundary
+        if: always()
+        run: echo 'Contract, integration and security regression checks only; no production deployment claim.' >> "$GITHUB_STEP_SUMMARY"
