@@ -10,11 +10,11 @@
 4. WOC valideert en dedupliceert het event en classificeert de bron als `current`, `stale` of `unknown`.
 5. WAF `openIncident` valideert het incident voordat verdere operationele workflows het ontvangen.
 
-## Private dependency
+## Publieke, exacte dependency
 
-WAF is een private repository. Een schone CI- of productie-installatie heeft daarom een afzonderlijke, read-only GitHub-identiteit nodig met uitsluitend Contents: Read voor `waldo-application-factory`. Configureer die credential in de deploymentomgeving, nooit in deze repository, npm-config, frontend of logs. Zonder credential moet `npm ci` falen; er is geen fallback naar een ongepinde kopie.
+WAF en WOC zijn op 2026-11-27 na expliciete eigenaarstoestemming openbaar gemaakt. WOC installeert WAF via een publieke tarball die aan de volledige commit-SHA is gebonden. Een schone CI- of productie-installatie heeft daarom geen repositorytoken nodig en kan niet ongemerkt naar een bewegende branch overschakelen.
 
-Package-publicatie naar een private registry is de voorkeursvervolgstap zodra het centrale releasecontract en de credential door de eigenaar zijn goedgekeurd. Tot die tijd is de volledige commit-SHA de distributiegrens.
+Een semantisch geversioneerde package-release blijft de voorkeursvervolgstap zodra het centrale releasecontract is goedgekeurd. Tot die tijd is de volledige commit-SHA de distributiegrens.
 
 ## Nog geen productieclaim
 

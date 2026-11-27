@@ -18,7 +18,13 @@ test('haalt echte commitvormen op en sorteert WAF en WOC op tijd', async () => {
 
 test('private 404 blijft expliciet authentication-required en lekt geen token', async () => {
   const connector=createGitHubActivityConnector({repositories:['waldokolk-dotcom/waldo-application-factory'],token:'github_pat_read_only_example',fetcher:async()=>response({message:'Not Found'},404)});
-  const result=await connector.load();assert.equal(result.state,'unknown');assert.deepEqual(result.failures,[{repository:'waldokolk-dotcom/waldo-application-factory',state:'authentication-required'}]);assert.doesNotMatch(JSON.stringify(result),/github_pat/);
+  const result=await connector.load();assert.equal(result.state,'unknown');assert.deepEqual(result.failures,[{repository:'waldokolk-dotcom/waldo-application-factory',ref:null,state:'authentication-required'}]);assert.doesNotMatch(JSON.stringify(result),/github_pat/);
+});
+
+test('volgt main en actieve ontwikkelbranch en dedupliceert dezelfde commit', async () => {
+  const repository='waldokolk-dotcom/waldo-operations-center';const seen=[];const shared=commit(repository,'d'.repeat(40),'Shared commit','2026-11-27T18:00:00Z');
+  const connector=createGitHubActivityConnector({repositories:[repository],refs:{[repository]:['main','feat/mission-control-m00-m01']},fetcher:async(url)=>{seen.push(url.searchParams.get('sha'));return response([shared])}});
+  const result=await connector.load();assert.deepEqual(seen,['main','feat/mission-control-m00-m01']);assert.equal(result.events.length,1);assert.equal(result.state,'current');
 });
 
 test('activity service dedupliceert door caching en geeft alleen veilige dashboardvelden', async () => {
